@@ -4,10 +4,9 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
-import DataTable from "examples/Tables/DataTable";
 import authorsTableData from "layouts/tables/data/authorsTableData";
 
-function Tables() {
+function CreateServer() {
 
   const { columns, rows } = authorsTableData();
 
@@ -29,17 +28,11 @@ function Tables() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  Services 
+                  New Service
                 </MDTypography>
               </MDBox>
-              <MDBox pt={3}>
-                <DataTable
-                  table={{ columns, rows }}
-                  isSorted={false}
-                  entriesPerPage={false}
-                  showTotalEntries={false}
-                  noEndBorder
-                />
+              <MDBox>
+              
               </MDBox>
             </Card>
           </Grid>
@@ -49,4 +42,4 @@ function Tables() {
   );
 }
 
-export default Tables;
+export default CreateServer;

@@ -1,7 +1,6 @@
 import Grid from "@mui/material/Grid";
 import MDBox from "components/MDBox";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
-import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
@@ -10,7 +9,7 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
-
+//import usestate and useffect
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -21,8 +20,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="dark"
                 icon="weekend"
-                title="Bookings"
-                count={281}
+                count="Online"
                 percentage={{
                   color: "success",
                   amount: "+55%",
@@ -35,8 +33,7 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 icon="leaderboard"
-                title="Today's Users"
-                count="2,300"
+                count="Overall up time"
                 percentage={{
                   color: "success",
                   amount: "+3%",
@@ -50,8 +47,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="success"
                 icon="store"
-                title="Revenue"
-                count="34k"
+                count="Average Latency"
                 percentage={{
                   color: "success",
                   amount: "+1%",
@@ -65,8 +61,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Followers"
-                count="+91"
+                count="Website Monitor"
                 percentage={{
                   color: "success",
                   amount: "",
@@ -76,20 +71,7 @@ function Dashboard() {
             </MDBox>
           </Grid>
         </Grid>
-        <MDBox mt={4.5}>
-          <Grid container spacing={3}>
-            <Grid item xs={18} ys={"100%"}>
-              <MDBox mb={3}>
-                <ReportsLineChart
-                  color="dark"
-                  title="completed tasks"
-                  description="Last Campaign Performance"
-                  chart={tasks}
-                />
-              </MDBox>
-            </Grid>
-          </Grid>
-        </MDBox>
+      
         <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={8}>

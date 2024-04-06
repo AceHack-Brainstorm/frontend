@@ -25,8 +25,11 @@ import MDTypography from "components/MDTypography";
 // Material Dashboard 2 React example components
 import DataTableBodyCell from "examples/Tables/DataTable/DataTableBodyCell";
 import DataTableHeadCell from "examples/Tables/DataTable/DataTableHeadCell";
+import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
+import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 
 function DataTable({
+  
   entriesPerPage,
   canSearch,
   showTotalEntries,
@@ -34,7 +37,9 @@ function DataTable({
   pagination,
   isSorted,
   noEndBorder,
+  showChart
 }) {
+  const { sales, tasks } = reportsLineChartData;
   const defaultValue = entriesPerPage.defaultValue ? entriesPerPage.defaultValue : 10;
   const entries = entriesPerPage.entries
     ? entriesPerPage.entries.map((el) => el.toString())
@@ -192,6 +197,7 @@ function DataTable({
           {page.map((row, key) => {
             prepareRow(row);
             return (
+              <>
               <TableRow key={key} {...row.getRowProps()}>
                 {row.cells.map((cell, idx) => (
                   <DataTableBodyCell
@@ -203,7 +209,16 @@ function DataTable({
                     {cell.render("Cell")}
                   </DataTableBodyCell>
                 ))}
-              </TableRow>
+              </TableRow>{showChart?(
+              <MDBox mb={3}>
+              <ReportsLineChart
+                color="dark"
+                title="completed tasks"
+                description="Last Campaign Performance"
+                chart={tasks}
+              />
+            </MDBox>):null}
+            </>
             );
           })}
         </TableBody>

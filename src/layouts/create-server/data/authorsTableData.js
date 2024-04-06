@@ -9,7 +9,8 @@ import team4 from "assets/images/team-4.jpg";
 export default function data() {
   const Author = ({name, email }) => (
     <MDBox display="flex" alignItems="center" lineHeight={1}>
-      <MDBox ml={0} lineHeight={1}>
+      <MDAvatar name={name} size="sm" />
+      <MDBox ml={2} lineHeight={1}>
         <MDTypography display="block" variant="button" fontWeight="medium">
           {name}
         </MDTypography>
@@ -41,7 +42,7 @@ export default function data() {
         author: <Author name="Google Service" email="https://www.google.co.in/" />,
         function: <Job title="Type" description="Website" />,
         status: (
-          <MDBox ml={0}>
+          <MDBox ml={-1}>
             <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
           </MDBox>
         ),
