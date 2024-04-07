@@ -1,31 +1,18 @@
-
-
 import { useEffect, useMemo, useState } from "react";
-
-// prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
-
-// react-table components
 import { useAsyncDebounce, useGlobalFilter, usePagination, useSortBy, useTable } from "react-table";
-
-// @mui material components
 import Autocomplete from "@mui/material/Autocomplete";
 import Icon from "@mui/material/Icon";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDInput from "components/MDInput";
 import MDPagination from "components/MDPagination";
 import MDTypography from "components/MDTypography";
-
-// Material Dashboard 2 React example components
 import DataTableBodyCell from "examples/Tables/DataTable/DataTableBodyCell";
 import DataTableHeadCell from "examples/Tables/DataTable/DataTableHeadCell";
-import ReportsLineChart from "examples/Charts/LineCharts/ReportsLineChart";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 
 function DataTable({
@@ -136,7 +123,7 @@ function DataTable({
   } else {
     entriesEnd = pageSize * (pageIndex + 1);
   }
-
+  
   return (
     <TableContainer sx={{ boxShadow: "none" }}>
       {entriesPerPage || canSearch ? (
@@ -198,7 +185,9 @@ function DataTable({
             prepareRow(row);
             return (
               <>
-              <TableRow key={key} {...row.getRowProps()}>
+              <TableRow onClick={()=>{
+                window.open("/dashboard")
+              }} key={key} {...row.getRowProps()}>
                 {row.cells.map((cell, idx) => (
                   <DataTableBodyCell
                     key={idx}

@@ -18,9 +18,7 @@ function CreateServer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Do something with the form data, for example, send it to a server
     console.log({ name, url, architecture });
-    // Clear the form fields after submission
     setName("");
     setUrl("");
     setArchitecture("");
@@ -70,23 +68,25 @@ function CreateServer() {
                         required
                       />
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={24} md={12}>
                       <TextField
                         fullWidth
                         label="Architecture"
                         variant="outlined"
                         value={architecture}
+                        style={{height:"2rem"}}
                         onChange={(e) => setArchitecture(e.target.value)}
                         required
                       />
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
+                  <Grid item xs={6} sm={3} sx={{ textAlign: "center", marginX: "auto", color: "#ffffff" }}>
                     <Button
                       fullWidth
                       variant="contained"
                       color="primary"
                       type="submit"
+                      style={{color:"white"}}
                       sx={{ mt: 4 }} 
                     >
                       Submit

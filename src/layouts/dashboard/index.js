@@ -5,11 +5,8 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import Projects from "layouts/dashboard/components/Projects";
-import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 
 function Dashboard() {
-  const { sales, tasks } = reportsLineChartData;
-//import usestate and useffect
   return (
     <DashboardLayout>
       <DashboardNavbar />

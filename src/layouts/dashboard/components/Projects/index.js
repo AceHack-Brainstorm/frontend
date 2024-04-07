@@ -1,12 +1,11 @@
-import { useState } from "react";
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import DataTable from "examples/Tables/DataTable";
 import data from "layouts/dashboard/components/Projects/data";
+import { useState } from "react";
 
 function Projects() {
   const { columns, rows } = data();
@@ -41,7 +40,7 @@ function Projects() {
       <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <MDBox>
           <MDTypography variant="h6" gutterBottom>
-            Projects
+            Architecture
           </MDTypography>
           <MDBox display="flex" alignItems="center" lineHeight={0}>
             <Icon
@@ -54,7 +53,7 @@ function Projects() {
               done
             </Icon>
             <MDTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>30 done</strong> this month
+              &nbsp;<strong>Google Website</strong>
             </MDTypography>
           </MDBox>
         </MDBox>
@@ -65,14 +64,10 @@ function Projects() {
         </MDBox>
         {renderMenu}
       </MDBox>
-      <MDBox>
-        <DataTable
-          table={{ columns, rows }}
-          showTotalEntries={false}
-          isSorted={false}
-          noEndBorder
-          entriesPerPage={false}
-        />
+      <MDBox p={3}> {/* New MDBox for additional data */}
+        <MDTypography variant="body1">
+          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica
+        </MDTypography>
       </MDBox>
     </Card>
   );

@@ -1,10 +1,7 @@
-import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import team2 from "assets/images/team-2.jpg";
-import team3 from "assets/images/team-3.jpg";
-import team4 from "assets/images/team-4.jpg";
+import { useEffect, useState } from 'react';
 
 export default function data() {
   const Author = ({name, email }) => (
@@ -27,6 +24,29 @@ export default function data() {
     </MDBox>
   );
 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://monitor-backend.codinger.net/uptime-monitors");
+      const jsonData = await response.json();
+      console.log(jsonData)
+      setData(jsonData);
+      console.log(data[1].name)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  // fetch("https://monitor-backend.codinger.net/uptime-monitors")
+  //           .then((res) => res.json())
+  //           .then((console.log))
+  //           .catch(console.error)
+
   return {
     columns: [
       { Header: "action", accessor: "action", align: "center" },
@@ -38,7 +58,7 @@ export default function data() {
 
     rows: [
       {
-        author: <Author name="Google Service" email="https://www.google.co.in/" />,
+        author: <Author name={data[0]?.name} email={data[0]?.url} />,
         function: <Job title="Type" description="Website" />,
         status: (
           <MDBox ml={0}>
@@ -62,6 +82,31 @@ export default function data() {
         </>
         ),
       },
+      {
+        author: <Author name={data[1]?.name} email={data[1]?.url} />,
+        function: <Job title="Type" description="Website" />,
+        status: (
+          <MDBox ml={0}>
+            <MDBadge badgeContent="online" color="success" variant="gradient" size="sm" />
+          </MDBox>
+        ),
+        employed: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            23/04/18
+          </MDTypography>
+        ),
+        action: (
+          <>
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            Edit
+          </MDTypography>
+          
+          <MDTypography ml={"1rem"} component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          Delete
+        </MDTypography>
+        </>
+        ),
+      }
     ],
   };
 }
