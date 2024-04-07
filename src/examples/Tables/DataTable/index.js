@@ -16,7 +16,6 @@ import DataTableHeadCell from "examples/Tables/DataTable/DataTableHeadCell";
 import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 
 function DataTable({
-  
   entriesPerPage,
   canSearch,
   showTotalEntries,
@@ -24,7 +23,8 @@ function DataTable({
   pagination,
   isSorted,
   noEndBorder,
-  showChart
+  showChart,
+  getDetails
 }) {
   const { sales, tasks } = reportsLineChartData;
   const defaultValue = entriesPerPage.defaultValue ? entriesPerPage.defaultValue : 10;
@@ -33,9 +33,10 @@ function DataTable({
     : ["5", "10", "15", "20", "25"];
   const columns = useMemo(() => table.columns, [table]);
   const data = useMemo(() => table.rows, [table]);
+  const rowData = useMemo(() => table.data, [table]);
 
   const tableInstance = useTable(
-    { columns, data, initialState: { pageIndex: 0 } },
+    { columns, data, rowData, initialState: { pageIndex: 0 } },
     useGlobalFilter,
     useSortBy,
     usePagination
@@ -185,8 +186,10 @@ function DataTable({
             prepareRow(row);
             return (
               <>
-              <TableRow onClick={()=>{
-                window.open("/dashboard")
+              <TableRow onClick= {() => {
+                console.log(rowData, key)
+
+                getDetails(key, rowData[key].name, rowData[key].architecture, rowData[key].recommendation)
               }} key={key} {...row.getRowProps()}>
                 {row.cells.map((cell, idx) => (
                   <DataTableBodyCell

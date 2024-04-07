@@ -1,12 +1,16 @@
 import Grid from "@mui/material/Grid";
 import MDBox from "components/MDBox";
+import MDButton from "components/MDButton";
 import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 import Projects from "layouts/dashboard/components/Projects";
+import {useState, useEffect} from "react";
 
-function Dashboard() {
+function Dashboard({id, serviceName, arch, rec, clearDashboard}) {
+
+  const [data, setData] = useState()
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -72,7 +76,9 @@ function Dashboard() {
         <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={8}>
-              <Projects />
+              <Projects title={"Architecture"} serviceName={serviceName} arch={arch}/>
+              <Projects title={"Recommendation"}
+               id={id} serviceName={serviceName} arch={rec}/>
             </Grid>
             <Grid item xs={12} md={6} lg={4}>
               <OrdersOverview />
@@ -80,6 +86,7 @@ function Dashboard() {
           </Grid>
         </MDBox>
       </MDBox>
+      <MDButton onClick={clearDashboard}>Back</MDButton>
     </DashboardLayout>
   );
 }

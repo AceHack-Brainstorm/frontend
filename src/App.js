@@ -88,7 +88,7 @@ export default function App() {
               ? brandDark
               : brandWhite
           }
-          brandName="Project Name"
+          brandName="Cloud Sense"
           routes={routes}
           onMouseEnter={handleOnMouseEnter}
           onMouseLeave={handleOnMouseLeave}

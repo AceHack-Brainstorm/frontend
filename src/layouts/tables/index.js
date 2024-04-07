@@ -5,12 +5,33 @@ import MDTypography from "components/MDTypography";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import DataTable from "examples/Tables/DataTable";
+import Dashboard from "layouts/dashboard";
 import authorsTableData from "layouts/tables/data/authorsTableData";
+import { useState } from "react";
 
 function Tables() {
 
-  const { columns, rows } = authorsTableData();
-  return (
+  const [id, setId] = useState();
+  const [serviceName, setServiceName] = useState();
+  const [arch, setArch] = useState();
+  const [rec, setRec] = useState();
+
+  function getDetails(id, serviceName, arch, rec){
+    setId(id)
+    setServiceName(serviceName)
+    setArch(arch)
+    setRec(rec)
+  } 
+
+  function clearDashboard(){
+    setId(null)
+    setServiceName(null)
+    setArch(null)
+    setRec(null)
+  } 
+
+  const { data, columns, rows } = authorsTableData();
+  return id != null?(<Dashboard id={id} serviceName={serviceName} arch={arch} redc={rec} clearDashboard={clearDashboard}/>):(    
     <DashboardLayout>
       <DashboardNavbar />
       <MDBox pt={6} pb={3}>
@@ -33,11 +54,12 @@ function Tables() {
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
-                  table={{ columns, rows }}
+                  table={{ data, columns, rows }}
                   isSorted={false}
                   entriesPerPage={false}
                   showTotalEntries={false}
                   noEndBorder
+                  getDetails={getDetails}
                 />
               </MDBox>
             </Card>

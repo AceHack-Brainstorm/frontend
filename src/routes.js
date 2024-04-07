@@ -4,17 +4,17 @@ import Dashboard from "layouts/dashboard";
 import Tables from "layouts/tables";
 
 const routes = [
+  // {
+  //   type: "collapse",
+  //   name: "Dashboard",
+  //   key: "dashboard",
+  //   icon: <Icon fontSize="small">dashboard</Icon>,
+  //   route: "/dashboard",
+  //   component: <Dashboard />,
+  // },
   {
     type: "collapse",
-    name: "Dashboard",
-    key: "dashboard",
-    icon: <Icon fontSize="small">dashboard</Icon>,
-    route: "/dashboard",
-    component: <Dashboard />,
-  },
-  {
-    type: "collapse",
-    name: "Tables",
+    name: "Services",
     key: "tables",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/tables",
